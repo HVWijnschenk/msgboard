@@ -1,3 +1,5 @@
+<?php $BASE_URL = "/projects/university/msgboard/laravel/public/"; ?>
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
   <head>
@@ -13,15 +15,19 @@
         <h1>Sign It!</h1>
       </div>
     </section>
-    <section class="navigation">
+    <navbar class="navigation">
       <div class="container mx-auto">
-        <ul>
-          <li><a href="./">Home</a></li>
-          <li><a href="./visitors">Visitors</a></li>
-          <li><a href="./visitors/create">Add visitor</a></li>
+        <ul class="navbar">
+          <li><a href="<?= $BASE_URL ?>">Home</a></li>
+          if (Auth::guest())
+          <li><a href="<?= $BASE_URL ?>login">Login</a></li>
+          @else
+          <li><a href="<?= $BASE_URL ?>visitors">Visitors</a></li>
+          <li><a href="<?= $BASE_URL ?>visitors/create">Add visitor</a></li>
+          @endif
         </ul>
       </div>
-    </section>
+    </navbar>
     <section class="pageTitle">
       <div class="container mx-auto">
         <h2>@yield('title')</h2>
